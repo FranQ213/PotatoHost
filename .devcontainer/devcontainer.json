@@ -1,0 +1,13 @@
+{
+  "name": "PotatoHost Codespace",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+  "postCreateCommand": "/bin/bash ./.devcontainer/setup-and-start.sh",
+  "forwardPorts": [25565],
+  "remoteUser": "vscode"
+}
