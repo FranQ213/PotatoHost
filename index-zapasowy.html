@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pl">
+<głowa>
+  <link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="utf-8" />
+  <meta name="viewport" content="szerokość=szerokość-urządzenia,skala-początkowa=1" />
+  <title>PotatoHost — szybkie uruchomienie serwera Minecraft</title>
+  <styl>
+    :root{--bg:#0b1020;--card:#0f1724;--accent:#f59e0b;--muted:#9aa4b2;--white:#e6eef6}
+    html,body{wysokość:100%;margines:0;rodzina czcionek:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; tło:liniowy-gradient(180 stopni,#071025 0%, #071426 100%);kolor:var(--biały)}
+    .wrap{minimalna wysokość:100%;wyświetlacz:flex;wyrównanie elementów:środek;wyrównanie zawartości:środek;wypełnienie:32px}
+    .card{szerokość: 100%;maksymalna szerokość: 920px;tło:liniowy-gradient(180 stopni, rgba(255,255,255,0.02), rgba(255,255,255,0.01));promień obramowania: 12px;wypełnienie: 28px;cień pola: 0 6px 30px rgba(2,6,23,0.6);obramowanie:1px stałe rgba(255,255,255,0.03)}
+    h1{margines:0 0 8px;rozmiar czcionki:28px}
+    p.lead{margin:0 0 18px;color:var(--wyciszony)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-górny:18px}
+    .btn{tło:var(--akcent);kolor:#08121a;wypełnienie:12px 18px;promień obramowania:10px;waga czcionki:600;dekoracja tekstu:brak;cień pola:0 6px 18px rgba(245,158,11,0.12);wyświetlacz:inline-flex;wyrównanie elementów:środek;odstęp:10px}
+    .btn.ghost{tło:przezroczyste;obramowanie:1px solid rgba(255,255,255,0.06);kolor:zmienny(--biały);wypełnienie:10px 14px}
+    .info{margin-top:18px;kolor:var(--wyciszony);rozmiar-czcionki:14px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+    pre{tło:rgba(0,0,0,0.2);wypełnienie:12px;promień obramowania:8px;kolor:zmienny(--biały);rozmiar czcionki:13px;przepełnienie:automatyczne}
+    @media(maks. szerokość:880px){.grid{kolumny-szablonu-siatki:1fr}}
+  </styl>
+</head>
+<treść>
+  <div class="wrap">
+    <div class="karta">
+      <div class="grid">
+        <div>
+          <h1>PotatoHost — uruchom serwer Minecraft w Codespaces</h1>
+          <p class="lead">Kliknij poniżej, aby otworzyć stronę tworzenia Codespace z tym repozytorium. Codespace będzie zawierał gotowy skrypt <code>start.sh</code>, który obsługuje Java / Paper i odpali serwer.</p>
+ 
+          <div class="akcje">
+            <!-- główny przycisk otwierający GitHub Codespaces -->
+            <a class="btn" href="https://codespaces.new/FranQ213/PotatoHost" target="_blank" rel="noopener noreferrer">
+              🚀 Stwórz Serwer
+            </a>
+ 
+            <!-- drugi przycisk stosowany w repo na GitHub -->
+            <a class="btn ghost" href="https://github.com/FranQ213/PotatoHost" target="_blank" rel="noopener noreferrer">
+              📂 Repozytorium na GitHub
+            </a>
+          </div>
+ 
+          <div class="info">
+            <strong>Uwaga:</strong> drugie Codespace wymaga konta GitHub. Przestrzenie kodów są uruchamiane na koncie użytkownika i mogą mieć timeout/rozliczenia - na serwerze nie będącym serwerem hostingowym 24 godziny na dobę, 7 dni w tygodniu.
+          </div>
+ 
+          <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+ 
+          <h3>Jak to działa</h3>
+          <ol style="color:var(--muted);margin:8px 0 0;padding-left:18px">
+            <li>Repo zawiera <code>.devcontainer</code> i <code>start.sh</code>.</li>
+            <li>Kliknięcie „Stwórz Codespace” otwiera GitHub — tworzysz Codespace na swoim koncie.</li>
+            <li>Devcontainer automatycznie uruchamia skrypt, który pobiera Paper i instaluje JDK.</li>
+            <li>Aby podłączyć się do serwera z Internetu, MineKube Connect / własnego tunelu / VPS.</li>
+          </ol>
+        </div>
+ 
+        <div>
+          <h4 style="margin-top:0">Szybkie komendy (dla twórcy)</h4>
+          <poprzednio>
+# uruchom lokalnie start.sh (test)
+WERSJA_KOMÓRKI=1.21.8 PAMIĘĆ_KOMÓRKI=2 ./start.sh
+ 
+# utwórz Codespace ręcznie
+https://codespaces.new/FranQ213/PotatoHost
+          </pre>
+ 
+          <p style="color:var(--muted);font-size:13px;margin-top:10px">Chcesz automatyzację (ustawianie tokenów, jedno kliknięcie)? To wymaga backendu i OAuth — mogę przesłać później.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ciało>
+</html>
