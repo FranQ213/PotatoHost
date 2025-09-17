@@ -1,0 +1,16 @@
+# Node / dev
+node_modules/
+.env
+.env.local
+.DS_Store
+
+# logs
+logs
+*.log
+
+# npm
+package-lock.json
+
+# VSCode / Codespaces
+.vscode/
+.devcontainer/
