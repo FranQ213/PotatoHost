@@ -1,85 +1,111 @@
 <!doctype html>
 <html lang="pl">
 <head>
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="favicon.png">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PotatoHost — szybko uruchom serwer Minecraft</title>
-<style>
-:root{--bg:#0b1020;--card:#0f1724;--accent:#f59e0b;--muted:#9aa4b2;--white:#e6eef6}
-html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,#071025 0%, #071426 100%);color:var(--white)}
-.wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px}
-.card{width:100%;max-width:920px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-h1{margin:0 0 8px;font-size:28px}
-p.lead{margin:0 0 18px;color:var(--muted)}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.btn{background:var(--accent);color:#08121a;padding:12px 18px;border-radius:10px;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(245,158,11,0.12);display:inline-flex;align-items:center;gap:10px}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);padding:10px 14px}
-.info{margin-top:18px;color:var(--muted);font-size:14px}
-.grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
-pre{background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;color:var(--white);font-size:13px;overflow:auto}
-@media(max-width:880px){.grid{grid-template-columns:1fr}}
-</style>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PotatoHost — szybko uruchom serwer Minecraft</title>
+  <style>
+    :root{--bg:#0b1020;--card:#0f1724;--accent:#f59e0b;--muted:#9aa4b2;--white:#e6eef6}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,#071025 0%, #071426 100%);color:var(--white)}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px}
+    .card{width:100%;max-width:920px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    h1{margin:0 0 8px;font-size:28px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{background:var(--accent);color:#08121a;padding:12px 18px;border-radius:10px;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(245,158,11,0.12);display:inline-flex;align-items:center;gap:10px}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);padding:10px 14px}
+    .info{margin-top:18px;color:var(--muted);font-size:14px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+    pre{background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;color:var(--white);font-size:13px;overflow:auto}
+    @media(max-width:880px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-<div class="wrap">
-<div class="card">
-<div class="grid">
-<div>
-<h1>PotatoHost — uruchom serwer Minecraft w Codespaces</h1>
-<p class="lead">Kliknij poniżej, aby otworzyć stronę tworzenia Codespace z tym repozytorium. Codespace będzie zawierać gotowy skrypt <code>start.sh</code>, który przygotuje Java / Paper i odpali serwer.</p>
+  <div class="wrap">
+    <div class="card">
+      <div class="grid">
+        <div>
+          <h1>PotatoHost — uruchom serwer Minecraft w Codespaces</h1>
+          <p class="lead">Kliknij poniżej, aby otworzyć stronę tworzenia Codespace z tym repozytorium. Codespace będzie zawierać gotowy skrypt <code>start.sh</code>, który przygotuje Java / Paper i odpali serwer.</p>
 
+          <div class="actions">
+            <!-- główny przycisk otwierający lokalny kreator (nowa karta).
+                 href jest relatywny (create.html) — działa na GitHub Pages / project site.
+                 Dodatkowo JS spróbuje sprawdzić czy create.html istnieje i w razie potrzeby przekieruje do Codespaces. -->
+            <a id="create-link" class="btn" href="create.html" target="_blank" rel="noopener noreferrer" title="Otwórz kreator tworzenia serwera">
+              🚀 Stwórz Serwer
+            </a>
 
-<div class="actions">
-<!-- główny przycisk otwierający lokalny kreator (nowa karta) -->
-<a class="btn" href="/create.html" target="_blank" rel="noopener noreferrer">
-🚀 Stwórz Serwer
-</a>
+            <!-- drugi przycisk pokazujący repo na GitHub -->
+            <a class="btn ghost" href="https://github.com/FranQ213/PotatoHost" target="_blank" rel="noopener noreferrer">
+              📂 Repozytorium na GitHub
+            </a>
+          </div>
 
+          <div class="info">
+            <strong>Uwaga:</strong> otwarcie kreatora z automatyzacją (OAuth/API) wymaga backendu; bez backendu przycisk otworzy lokalny/plikiowy kreator (jeśli istnieje) — w przeciwnym razie zostaniesz przekierowany do GitHub Codespaces jako fallback.
+          </div>
 
-<!-- drugi przycisk pokazujący repo na GitHub -->
-<a class="btn ghost" href="https://github.com/FranQ213/PotatoHost" target="_blank" rel="noopener noreferrer">
-📂 Repozytorium na GitHub
-</a>
-</div>
+          <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
 
+          <h3>Jak to działa</h3>
+          <ol style="color:var(--muted);margin:8px 0 0;padding-left:18px">
+            <li>Repo zawiera <code>.devcontainer</code> i <code>start.sh</code>.</li>
+            <li>Kliknięcie „Stwórz Serwer” otwiera nową kartę z lokalnym kreatorem — to Twoje UI (nie GitHub UI).</li>
+            <li>Kreator może przeprowadzić OAuth z GitHub i użyć API do utworzenia Codespace / repo dla użytkownika.</li>
+            <li>Devcontainer automatycznie uruchamia skrypt, który pobiera Paper i instaluje JDK.</li>
+            <li>Aby podłączyć się do serwera z Internetu, użyj MineKube Connect / własnego tunelu / VPS.</li>
+          </ol>
+        </div>
 
-<div class="info">
-<strong>Uwaga:</strong> otwarcie kreatora wymaga lokalnego serwera (lub hostingu) który serwuje plik <code>create.html</code> i obsługuje OAuth z GitHub, aby móc automatycznie tworzyć repozytoria/Codespaces w koncie użytkownika.
-</div>
-
-
-<hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-
-<h3>Jak to działa</h3>
-<ol style="color:var(--muted);margin:8px 0 0;padding-left:18px">
-<li>Repo zawiera <code>.devcontainer</code> i <code>start.sh</code>.</li>
-<li>Kliknięcie „Stwórz Serwer” otwiera nową kartę z lokalnym kreatorem — to Twoje UI (nie GitHub UI).</li>
-<li>Kreator może przeprowadzić OAuth z GitHub i użyć API do utworzenia Codespace / repo dla użytkownika.</li>
-<li>Devcontainer automatycznie uruchamia skrypt, który pobiera Paper i instaluje JDK.</li>
-<li>Aby podłączyć się do serwera z Internetu, użyj MineKube Connect / własnego tunelu / VPS.</li>
-</ol>
-</div>
-
-
-<div>
-<h4 style="margin-top:0">Szybkie komendy (dla twórcy)</h4>
-<pre>
+        <div>
+          <h4 style="margin-top:0">Szybkie komendy (dla twórcy)</h4>
+          <pre>
 # uruchom lokalnie start.sh (test)
 MINE_VERSION=1.21.8 MINE_RAM=2 ./start.sh
 
-
 # utwórz Codespace ręcznie
 https://codespaces.new/FranQ213/PotatoHost
-</pre>
+          </pre>
 
+          <p style="color:var(--muted);font-size:13px;margin-top:10px">Jeśli chcesz, mogę dodać automatyzację (OAuth + backend) żeby tworzenie Codespace/repo działało w jednym kliknięciu bez przechodzenia do GitHub — proste rozwiązanie jest dostępne w repozytorium (create.html + server.js).</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p style="color:var(--muted);font-size:13px;margin-top:10px">Jeśli chcesz, mogę dodać automatyzację (OAuth + backend) żeby tworzenie Codespace/repo działało w jednym kliknięciu bez przechodzenia do GitHub — proste rozwiązanie jest dostępne w repozytorium (create.html + server.js).</p>
-</div>
-</div>
-</div>
-</div>
+  <script>
+    (function(){
+      const createLink = document.getElementById('create-link');
+      if(!createLink) return;
+
+      // Fallback Codespaces URL — edytuj jeśli chcesz inny
+      const codespacesUrl = 'https://codespaces.new/FranQ213/PotatoHost';
+
+      // If JS is enabled, intercept click to check whether create.html exists on the server.
+      createLink.addEventListener('click', function(evt){
+        // Only intercept left-clicks without modifier keys
+        if(evt.button !== 0 || evt.metaKey || evt.ctrlKey || evt.shiftKey || evt.altKey) {
+          return; // allow normal behavior (open in new tab)
+        }
+        evt.preventDefault();
+
+        // Try HEAD request to create.html (relative). If 200 -> open it. Otherwise open Codespaces fallback.
+        fetch('create.html', { method: 'HEAD', cache: 'no-store' }).then(response => {
+          if(response.ok) {
+            window.open('create.html', '_blank', 'noopener');
+          } else {
+            // file not found -> open Codespaces as fallback
+            window.open(codespacesUrl, '_blank', 'noopener');
+          }
+        }).catch(() => {
+          // network/other error -> open Codespaces as fallback
+          window.open(codespacesUrl, '_blank', 'noopener');
+        });
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
