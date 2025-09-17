@@ -4,58 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Stwórz serwer — kreator</title>
-<style>body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;padding:20px;max-width:720px;margin:0 auto}label,input,button{display:block;margin:8px 0}pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow:auto}button{background:#f59e0b;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}a.btn{display:inline-block;padding:8px 12px;border-radius:8px;background:#f59e0b;color:#08121a;text-decoration:none}</style>
+<style>
+  body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;padding:20px;max-width:820px;margin:12px auto;color:#071025}
+  .card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+  .btn{display:inline-block;background:#f59e0b;color:#08121a;padding:8px 12px;border-radius:8px;text-decoration:none;margin:6px 6px 6px 0}
+  .ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+  pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow:auto}
+  .note{color:#555;margin-top:8px}
+</style>
 </head>
 <body>
-<h1>Stwórz serwer</h1>
-<p>Ten interfejs łączy się z GitHub (OAuth) i może utworzyć repo/ Codespace. Jeśli nie masz backendu, użyj przycisku „Otwórz w Codespaces”.</p>
+  <div class="card">
+    <h1>Stwórz serwer</h1>
+    <p>To jest statyczny kreator. Jeśli chcesz pełnej automatyzacji (OAuth → tworzenie repo/Codespace bez wychodzenia z tej strony), potrzebny jest mały backend. Poniżej masz proste opcje:</p>
 
-<div id="not-auth">
-  <p>Nie jesteś zalogowany.</p>
-  <a class="btn" href="https://github.com/login" target="_blank" rel="noopener">Zaloguj przez GitHub</a>
-</div>
+    <p>
+      <a class="btn" href="https://github.com/login" target="_blank" rel="noopener">Zaloguj przez GitHub</a>
+      <a class="btn ghost" href="https://codespaces.new/FranQ213/PotatoHost" target="_blank" rel="noopener">Otwórz w Codespaces</a>
+    </p>
 
-<div id="form" style="display:none">
-<label>Nazwa repo (np. mój-serwer)</label>
-<input id="repoName" placeholder="nazwa-repo" />
-<label>Publiczne?</label>
-<select id="visibility"><option value="public">publiczne</option><option value="private">prywatne</option></select>
-<button id="create">Stwórz</button>
-<h3>Wynik:</h3>
-<pre id="out">—</pre>
-</div>
+    <div class="note">
+      <strong>Uwaga:</strong> strona nie wykrywa automatycznie, że jesteś zalogowany na GitHub — to wymóg bezpieczeństwa (żeby uzyskać dostęp do konta potrzebny jest token OAuth, który musi być bezpiecznie wymieniony na serwerze).
+    </div>
 
-<p style="margin-top:10px"><a class="btn" href="https://codespaces.new/FranQ213/PotatoHost" target="_blank" rel="noopener">Otwórz w Codespaces</a></p>
+    <hr>
 
-<script>
-async function checkAuth(){
-  try{
-    const r = await fetch('/api/me');
-    if(r.ok){
-      document.getElementById('not-auth').style.display = 'none';
-      document.getElementById('form').style.display = 'block';
-    } else {
-      document.getElementById('not-auth').style.display = '';
-      document.getElementById('form').style.display = 'none';
-    }
-  }catch(e){
-    document.getElementById('not-auth').style.display = '';
-    document.getElementById('form').style.display = 'none';
-  }
-}
-checkAuth();
+    <h3>Jeśli chcesz działać dalej — dwie drogi</h3>
+    <ol>
+      <li><strong>Szybki test w Codespaces:</strong> otwórz repo w Codespaces ręcznie — devcontainer uruchomi <code>start.sh</code> i nie potrzebujesz backendu do edycji/uruchomienia lokalnego testu.</li>
+      <li><strong>Pełna automatyzacja:</strong> dodaj backend z OAuth (ja mogę dodać `server.js` i instrukcję deploy — potem kliknięcie „Zaloguj” uruchomi OAuth i formularz <em>stanie się</em> aktywny).</li>
+    </ol>
 
-document.getElementById('create')?.addEventListener('click', async ()=>{
-  const name = document.getElementById('repoName').value || ('server-'+Math.random().toString(36).slice(2,8));
-  const visibility = document.getElementById('visibility').value;
-  try{
-    const res = await fetch('/api/create-server', {method:'POST',headers:{'Content-Type':'application/json'},body: JSON.stringify({name, visibility})});
-    const j = await res.json();
-    document.getElementById('out').textContent = JSON.stringify(j, null, 2);
-  }catch(e){
-    document.getElementById('out').textContent = 'Błąd: ' + e.message + '\\n(ten przycisk działa tylko gdy masz backend obsługujący /api/create-server)';
-  }
-});
-</script>
+    <h4>Jeśli chcesz, żebym dodał backend</h4>
+    <p class="note">Mogę od razu przygotować pliki backendu (Express) i instrukcję jak wdrożyć (np. w Codespaces do testów albo na Render/Railway do publicznego użycia). Po wdrożeniu wystarczy ustawić w `create.html` button <code>/auth/login</code> aby uruchomić OAuth.</p>
+  </div>
 </body>
 </html>
