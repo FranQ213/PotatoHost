@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stwórz serwer — kreator</title>
+<style>body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;padding:20px;max-width:720px;margin:0 auto}label,input,button{display:block;margin:8px 0}pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow:auto}</style>
+</head>
+<body>
+<h1>Stwórz serwer</h1>
+<p>Ten interfejs łączy się z GitHub (OAuth) i uruchamia akcję: tworzy repo z template. Najpierw musisz się zalogować.</p>
+
+
+<div id="not-auth">
+<button id="login">Zaloguj przez GitHub</button>
+</div>
+
+
+<div id="form" style="display:none">
+<label>Nazwa repo (np. mój-serwer)</label>
+<input id="repoName" placeholder="nazwa-repo" />
+<label>Publiczne?</label>
+<select id="visibility"><option value="public">publiczne</option><option value="private">prywatne</option></select>
+<button id="create">Stwórz</button>
+<h3>Wynik:</h3>
+<pre id="out">—</pre>
+</div>
+
+
+<script>
+document.getElementById('login').addEventListener('click', ()=>{
+// Przekierowanie do backendu, który rozpoczyna OAuth
+window.location.href = '/auth/login';
+});
+
+
+async function checkAuth(){
+try{
+const r = await fetch('/api/me');
+if(r.ok){
+const u = await r.json();
+document.getElementById('not-auth').style.display = 'none';
+document.getElementById('form').style.display = 'block';
+} else {
+document.getElementById('not-auth').style.display = '';
+document.getElementById('form').style.display = 'none';
+}
+}catch(e){
+document.getElementById('not-auth').style.display = '';
+document.getElementById('form').style.display = 'none';
+}
+}
+checkAuth();
+
+
+document.getElementById('create').addEventListener('click', async ()=>{
+const name = document.getElementById('repoName').value || ('server-' + Math.random().toString(36).slice(2,8));
+const visibility = document.getElementById('visibility').value;
+const res = await fetch('/api/create-server', {method:'POST',headers:{'Content-Type':'application/json'},body: JSON.stringify({name, visibility})});
+const json = await res.json();
+document.getElementById('out').textContent = JSON.stringify(json, null, 2);
+});
+</script>
+</body>
+</html>
